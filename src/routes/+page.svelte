@@ -3,7 +3,7 @@
 <main>
     <header><h2>STRICH SvelteKit Sample</h2></header>
     <p>
-        Note: Only <b>Code 128</b> symbology is enabled.
+        Enabled symbologies: <b>Code 128, QR</b>.
     </p>
     <section>
         <header><h3>Single Scan</h3></header>
