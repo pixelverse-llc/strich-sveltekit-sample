@@ -1,6 +1,6 @@
 # STRICH SDK SvelteKit sample code
 
-This repository shows to integrate STRICH SDK into a SvelteKit project.
+This repository shows to integrate STRICH SDK into a SvelteKit 4 project.
 You need a valid license key to run this sample. To get started with STRICH SDK, check out to the [Getting Started](https://docs.strich.io/getting-started.html) guide.
 
 To start the development server, run `npm run dev`.
