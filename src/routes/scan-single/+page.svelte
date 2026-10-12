@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import Scanner from "$lib/Scanner.svelte";
+    import Scanner from "#lib/Scanner.svelte";
     import { type CodeDetection } from "@pixelverse/strichjs-sdk";
 
     function onDetected(codeDetections: CodeDetection[]) {
@@ -11,7 +11,7 @@
 
 <main class="wrapper">
     <header class="top-bar">
-        <h3>Single Barcode Scan</h3>
+        <h1>Single Barcode Scan</h1>
         <a href="/">EXIT</a>
     </header>
 
@@ -19,4 +19,7 @@
 </main>
 
 <style>
+    h1 {
+        font-size: 1.2em;
+    }
 </style>

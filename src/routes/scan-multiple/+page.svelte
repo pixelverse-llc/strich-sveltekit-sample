@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Scanner from "$lib/Scanner.svelte";
+    import Scanner from "#lib/Scanner.svelte";
     import { type CodeDetection } from "@pixelverse/strichjs-sdk";
 
-    let numScannedCodes = 0;
-    let scannedCodes: string[] = ['-', '-', '-', '-'];
+    let numScannedCodes = $state(0);
+    let scannedCodes: string[] = $state(['-', '-', '-', '-']);
 
     function onDetected(codeDetections: CodeDetection[]) {
         if (numScannedCodes < 4 && scannedCodes.indexOf(codeDetections[0].data) === -1) {
@@ -15,7 +15,7 @@
 
 <main class="wrapper">
     <header class="top-bar">
-        <h3>Multiple Scans</h3>
+        <h1>Multiple Scans</h1>
         <a href="/">EXIT</a>
     </header>
     <Scanner detected={onDetected}></Scanner>
@@ -28,6 +28,9 @@
 </main>
 
 <style>
+    h1 {
+        font-size: 1.2em;
+    }
     .barcode-grid {
         display: grid;
         padding: 8px;

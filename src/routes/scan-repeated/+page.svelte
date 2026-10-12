@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Scanner from "$lib/Scanner.svelte";
+    import Scanner from "#lib/Scanner.svelte";
     import { type CodeDetection } from "@pixelverse/strichjs-sdk";
     import { goto } from "$app/navigation";
 
-    let codesScanned = 0;
-    let data = '';
+    let codesScanned = $state(0);
+    let data = $state('');
     let confirmScanDialog: HTMLDialogElement;
     let scanner: Scanner;
 
@@ -27,7 +27,7 @@
 
 <main class="wrapper">
     <header class="top-bar">
-        <h3>Repeated Scans</h3>
+        <h1>Repeated Scans</h1>
         <a href="/">EXIT</a>
     </header>
     <Scanner detected={onDetected} bind:this={scanner}></Scanner>
@@ -38,13 +38,16 @@
     <p>Scanned code: <b>{ data }</b></p>
 
     <div class="button-bar">
-        <button on:click={continueScanning}>CONTINUE</button>
-        <button on:click={finishScanning}>FINISH</button>
+        <button onclick={continueScanning}>CONTINUE</button>
+        <button onclick={finishScanning}>FINISH</button>
     </div>
 </dialog>
 
 
 <style>
+    h1 {
+        font-size: 1.2em;
+    }
     dialog {
         margin: auto;
     }

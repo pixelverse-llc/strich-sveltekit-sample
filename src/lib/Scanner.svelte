@@ -1,10 +1,14 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
     import { BarcodeReader, type CodeDetection, type Configuration } from "@pixelverse/strichjs-sdk";
-    import { ensureSDKInitialized } from "$lib";
+    import { ensureSDKInitialized } from "#lib";
 
-    // callback for other components/pages
-    export let detected: (detections: CodeDetection[]) => void | undefined;
+    interface Props {
+        // callback for other components/pages
+        detected?: (detections: CodeDetection[]) => void;
+    }
+
+    let { detected }: Props = $props();
 
     let hostElement: HTMLElement;
     let barcodeReader: BarcodeReader | undefined;
@@ -26,9 +30,7 @@
         barcodeReader = new BarcodeReader(configuration);
         await barcodeReader.initialize();
         barcodeReader.detected = (codeDetections) => {
-            if (detected) {
-                detected(codeDetections);
-            }
+            detected?.(codeDetections);
         }
         await barcodeReader.start();
 
